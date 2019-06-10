@@ -3,10 +3,12 @@ import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
+import { ScRootComponent } from './components/sc-root/sc-root.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ScRootComponent
   ],
   imports: [
     BrowserModule,
