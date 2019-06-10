@@ -1,7 +1,8 @@
 import { RequestMethod } from '@angular/http';
+import { Track } from '../models/track';
 
 export interface IPaginatedData {
-  collection: any[];
+  collection: Track[];
   next_href?: string;
 }
 
