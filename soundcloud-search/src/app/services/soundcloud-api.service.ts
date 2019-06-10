@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, Request, RequestMethod, Response } from '@angular/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { IPaginatedData, IRequestOptions, IRequestArgs } from './interfaces';
 import {
@@ -13,13 +14,17 @@ import { map, filter, switchMap } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class SoundcloudApiService {
-  constructor(private http: Http) {}
+  constructor(private http: Http, private httpClient: HttpClient) {}
 
   fetchSearchResults(query: string): Observable<IPaginatedData> {
-    return this.request({
-      paginate: true,
-      query: `q=${query}`,
-      url: API_TRACKS_URL
+    const url = `${API_TRACKS_URL}`;
+    return this.httpClient.get<IPaginatedData>(url, {
+      params: {
+        client_id: 'ggX0UomnLs0VmW7qZnCzw%20',
+        limit: '7',
+        linked_partitioning: '1',
+        q: 'pixies'
+      }
     });
   }
 
