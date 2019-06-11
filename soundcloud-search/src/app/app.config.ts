@@ -5,3 +5,5 @@ export const CLIENT_ID_PARAM = `client_id=${CLIENT_ID}`;
 export const PAGINATION_LIMIT = 7;
 export const LINKED_PARTITIONING = 7;
 export const PAGINATION_PARAMS = `limit=${PAGINATION_LIMIT}&linked_partitioning=1`;
+export const HISTORY_KEY = 'sc_history';
+export const HISTORY_LENGTH = 5;
