@@ -1,3 +1,13 @@
 <div class="sub-container" style="background-color: yellow">
-  sc-search works!
+  <form [formGroup]="searchFormGroup" (ngSubmit)="execSearch()">
+    <div class="search-control">
+      <input
+        id="inputSearch"
+        type="text"
+        formControlName="formControlSearch"
+        [placeholder]="'Search'"
+      />
+      <button type="submit" [disabled]="searchFormGroup.invalid">Go</button>
+    </div>
+  </form>
 </div>

@@ -1,0 +1,13 @@
+.search-control {
+  width: 70%;
+  min-width: 280px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 10px;
+  input {
+    width: 70%;
+    min-width: 200px;
+    margin-left: 10px;
+  }
+}

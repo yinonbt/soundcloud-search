@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { ScRootComponent } from './components/sc-root/sc-root.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -19,6 +19,8 @@ import { ScSearchHistoryComponent } from './components/sc-search-history/sc-sear
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
     HttpModule,
     HttpClientModule
   ],

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-sc-search',
@@ -6,10 +7,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sc-search.component.scss']
 })
 export class ScSearchComponent implements OnInit {
+  query: string;
 
-  constructor() { }
+  searchFormGroup = this.formBuilder.group({
+    formControlSearch: [this.query, Validators.required]
+  });
+  
+  constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit() {
   }
 
+  execSearch() {
+    const newFolderName = this.searchFormGroup.get('formControlSearch')
+      .value;
+    //this.folderService.addFolder(newFolderName);
+  }
 }

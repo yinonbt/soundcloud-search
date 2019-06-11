@@ -6,16 +6,19 @@
 
     app-sc-search {
         width:38%;
+        min-width: 300px;
         height: 100%;
     }
 
     app-sc-artwork {
         width:38%;
+        min-width: 300px;
         height: 100%;
     }
 
     app-sc-search-history {
         width:20%;
+        min-width: 150px;
         height: 100%;
     }
 }
