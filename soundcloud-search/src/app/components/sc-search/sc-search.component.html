@@ -1,13 +1,13 @@
 <div class="sub-container" style="background-color: yellow">
   <form [formGroup]="searchFormGroup" (ngSubmit)="execSearch()">
     <div class="search-control">
-      <input
-        id="inputSearch"
-        type="text"
-        formControlName="formControlSearch"
-        [placeholder]="'Search'"
-      />
+      <input id="inputSearch" type="text" formControlName="formControlSearch" [placeholder]="'Search'" />
       <button type="submit" [disabled]="searchFormGroup.invalid">Go</button>
     </div>
   </form>
+  <div class="results-container">
+    <div *ngFor="let track of tracks">
+      <app-sc-search-result [track]="track"></app-sc-search-result>
+    </div>
+  </div>
 </div>

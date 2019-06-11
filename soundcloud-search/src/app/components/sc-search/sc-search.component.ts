@@ -1,5 +1,6 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Track } from 'src/app/models/track';
 
 @Component({
   selector: 'app-sc-search',
@@ -7,6 +8,7 @@ import { FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./sc-search.component.scss']
 })
 export class ScSearchComponent implements OnInit {
+  @Input() tracks: Track[];
   @Output() searchRequested = new EventEmitter<string>();
   query: string;
 

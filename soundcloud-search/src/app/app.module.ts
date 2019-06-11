@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ScSearchComponent } from './components/sc-search/sc-search.component';
 import { ScArtworkComponent } from './components/sc-artwork/sc-artwork.component';
 import { ScSearchHistoryComponent } from './components/sc-search-history/sc-search-history.component';
+import { ScSearchResultComponent } from './components/sc-search-result/sc-search-result.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { ScSearchHistoryComponent } from './components/sc-search-history/sc-sear
     ScRootComponent,
     ScSearchComponent,
     ScArtworkComponent,
-    ScSearchHistoryComponent
+    ScSearchHistoryComponent,
+    ScSearchResultComponent
   ],
   imports: [
     BrowserModule,
