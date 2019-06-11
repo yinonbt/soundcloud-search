@@ -10,9 +10,9 @@ export class ScRootComponent implements OnInit {
   constructor(private apiService: SoundcloudApiService) {}
 
   ngOnInit() {
-    this.apiService.fetchSearchResults('pixies').subscribe(results => {
-      console.log('results.collection ', results.collection);
-      console.log('results.next_href ', results.next_href);
-    });
+    // this.apiService.fetchSearchResults('pixies').subscribe(results => {
+    //   console.log('results.collection ', results.collection);
+    //   console.log('results.next_href ', results.next_href);
+    // });
   }
 }
