@@ -5,11 +5,17 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { ScRootComponent } from './components/sc-root/sc-root.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ScSearchComponent } from './components/sc-search/sc-search.component';
+import { ScArtworkComponent } from './components/sc-artwork/sc-artwork.component';
+import { ScSearchHistoryComponent } from './components/sc-search-history/sc-search-history.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ScRootComponent
+    ScRootComponent,
+    ScSearchComponent,
+    ScArtworkComponent,
+    ScSearchHistoryComponent
   ],
   imports: [
     BrowserModule,

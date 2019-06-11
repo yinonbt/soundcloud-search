@@ -29,5 +29,5 @@ export class SoundcloudApiService {
         q: 'pixies'
       }
     });
-  }  
+  } 
 }
