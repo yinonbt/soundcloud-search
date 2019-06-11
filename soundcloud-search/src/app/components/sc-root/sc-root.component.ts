@@ -11,18 +11,20 @@ import { ScSearchService } from 'src/app/services/sc-search.service';
 })
 export class ScRootComponent implements OnInit {
   tracks$: Observable<Track[]>;
+  selectedTrack$: Observable<Track>;
 
   constructor(private scSearchService: ScSearchService) {}
 
   ngOnInit() {
     this.tracks$ = this.scSearchService.tracks$;
-    // this.apiService.fetchSearchResults('pixies').subscribe(results => {
-    //   console.log('results.collection ', results.collection);
-    //   console.log('results.next_href ', results.next_href);
-    // });
+    this.selectedTrack$ = this.scSearchService.selectedTrack$;
   }
 
   onSearchRequested(query: string) {
     this.scSearchService.execSearch(query);
+  }
+
+  onTrackSelected(track: Track) {
+    this.scSearchService.selectTrack(track);
   }
 }

@@ -8,6 +8,7 @@ import { Observable, BehaviorSubject } from 'rxjs';
 })
 export class ScSearchService {
   tracks$ = new BehaviorSubject<Track[]>([]);
+  selectedTrack$ = new BehaviorSubject<Track>(null);
   constructor(private apiService: SoundcloudApiService) {}
 
   execSearch(query: string) {
@@ -16,5 +17,9 @@ export class ScSearchService {
       console.log('results.next_href ', paginatedData.next_href);
       this.tracks$.next(paginatedData.collection);
     });
+  }
+
+  selectTrack(track: Track) {
+    this.selectedTrack$.next(track);
   }
 }

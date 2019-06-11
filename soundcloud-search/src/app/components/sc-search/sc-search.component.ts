@@ -9,6 +9,7 @@ import { Track } from 'src/app/models/track';
 })
 export class ScSearchComponent implements OnInit {
   @Input() tracks: Track[];
+  @Input() selectedTrack: Track;
   @Output() searchRequested = new EventEmitter<string>();
   @Output() trackSelected = new EventEmitter<Track>();
   query: string;

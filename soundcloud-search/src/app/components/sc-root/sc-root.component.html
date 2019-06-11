@@ -1,5 +1,11 @@
 <div class="main-container">
-  <app-sc-search (searchRequested)="onSearchRequested($event)" [tracks]="tracks$ | async"> </app-sc-search>
+  <app-sc-search
+    (searchRequested)="onSearchRequested($event)"
+    (trackSelected)="onTrackSelected($event)"
+    [tracks]="tracks$ | async"
+    [selectedTrack]="selectedTrack$ | async"
+  >
+  </app-sc-search>
   <app-sc-artwork></app-sc-artwork>
   <app-sc-search-history></app-sc-search-history>
 </div>
