@@ -6,6 +6,6 @@
     [selectedTrack]="selectedTrack$ | async"
   >
   </app-sc-search>
-  <app-sc-artwork></app-sc-artwork>
+  <app-sc-artwork [selectedTrack]="selectedTrack$ | async"></app-sc-artwork>
   <app-sc-search-history></app-sc-search-history>
 </div>
