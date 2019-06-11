@@ -6,7 +6,10 @@ import { IPaginatedData, IRequestOptions, IRequestArgs } from './interfaces';
 import {
   API_TRACKS_URL,
   CLIENT_ID_PARAM,
-  PAGINATION_PARAMS
+  PAGINATION_PARAMS,
+  CLIENT_ID,
+  PAGINATION_LIMIT,
+  LINKED_PARTITIONING
 } from '../app.config';
 import { map, filter, switchMap } from 'rxjs/operators';
 
@@ -20,37 +23,11 @@ export class SoundcloudApiService {
     const url = `${API_TRACKS_URL}`;
     return this.httpClient.get<IPaginatedData>(url, {
       params: {
-        client_id: 'ggX0UomnLs0VmW7qZnCzw%20',
-        limit: '7',
-        linked_partitioning: '1',
+        client_id: `${CLIENT_ID}`,
+        limit:`${PAGINATION_LIMIT}`,
+        linked_partitioning: `${LINKED_PARTITIONING}`,
         q: 'pixies'
       }
     });
-  }
-
-  request(options: IRequestOptions): Observable<any> {
-    const req: Request = new Request(this.requestArgs(options));
-    return this.http.request(req).pipe(map((res: Response) => res.json()));
-  }
-
-  requestArgs(options: IRequestOptions): IRequestArgs {
-    const { method, paginate, query, url } = options;
-    const search: string[] = [];
-
-    if (!url.includes(CLIENT_ID_PARAM)) {
-      search.push(CLIENT_ID_PARAM);
-    }
-    if (paginate) {
-      search.push(PAGINATION_PARAMS);
-    }
-    if (query) {
-      search.push(query);
-    }
-
-    return {
-      method: method || RequestMethod.Get,
-      search: search.join('&'),
-      url
-    };
-  }
+  }  
 }
