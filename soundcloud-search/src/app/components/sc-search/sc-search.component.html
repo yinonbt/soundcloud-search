@@ -7,7 +7,7 @@
   </form>
   <div class="results-container">
     <div *ngFor="let track of tracks">
-      <app-sc-search-result [track]="track"></app-sc-search-result>
+      <app-sc-search-result [track]="track" (trackSelected)="onTrackSelected($event)"></app-sc-search-result>
     </div>
   </div>
 </div>

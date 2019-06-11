@@ -10,6 +10,7 @@ import { Track } from 'src/app/models/track';
 export class ScSearchComponent implements OnInit {
   @Input() tracks: Track[];
   @Output() searchRequested = new EventEmitter<string>();
+  @Output() trackSelected = new EventEmitter<Track>();
   query: string;
 
   searchFormGroup = this.formBuilder.group({
@@ -28,5 +29,9 @@ export class ScSearchComponent implements OnInit {
     if (query) {
       this.searchRequested.emit(query);
     }
+  }
+
+  onTrackSelected(track: Track) {
+    this.trackSelected.emit(track);
   }
 }

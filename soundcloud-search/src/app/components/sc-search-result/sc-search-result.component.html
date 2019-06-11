@@ -1,3 +1,5 @@
-<div class="result-container">
+<div class="result-container" (click)="onClick()" [ngClass]="{
+  'result-container-selected': selectedTrack?.id === track.id
+}">
   {{track.title}}
 </div>
