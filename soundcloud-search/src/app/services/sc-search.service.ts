@@ -1,14 +1,20 @@
 import { Injectable } from '@angular/core';
 import { SoundcloudApiService } from './soundcloud-api.service';
+import { Track } from '../models/track';
+import { Observable, BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ScSearchService {
-
-  constructor(private apiService: SoundcloudApiService) { }
+  tracks$ = new BehaviorSubject<Track[]>([]);
+  constructor(private apiService: SoundcloudApiService) {}
 
   execSearch(query: string) {
-    this.apiService.fetchSearchResults(query)
+    this.apiService.fetchSearchResults(query).subscribe(paginatedData => {
+      console.log('results.collection ', paginatedData.collection);
+      console.log('results.next_href ', paginatedData.next_href);
+      this.tracks$.next(paginatedData.collection);
+    });
   }
 }

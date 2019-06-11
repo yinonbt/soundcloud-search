@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
@@ -7,20 +7,24 @@ import { FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./sc-search.component.scss']
 })
 export class ScSearchComponent implements OnInit {
+  @Output() searchRequested = new EventEmitter<string>();
   query: string;
 
   searchFormGroup = this.formBuilder.group({
     formControlSearch: [this.query, Validators.required]
   });
-  
-  constructor(private formBuilder: FormBuilder) { }
 
-  ngOnInit() {
-  }
+  constructor(private formBuilder: FormBuilder) {}
+
+  ngOnInit() {}
 
   execSearch() {
-    const newFolderName = this.searchFormGroup.get('formControlSearch')
-      .value;
-    //this.folderService.addFolder(newFolderName);
+    let query: string = this.searchFormGroup
+      .get('formControlSearch')
+      .value.toString();
+    query = query.trim();
+    if (query) {
+      this.searchRequested.emit(query);
+    }
   }
 }

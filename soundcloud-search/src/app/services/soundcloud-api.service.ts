@@ -24,10 +24,10 @@ export class SoundcloudApiService {
     return this.httpClient.get<IPaginatedData>(url, {
       params: {
         client_id: `${CLIENT_ID}`,
-        limit:`${PAGINATION_LIMIT}`,
+        limit: `${PAGINATION_LIMIT}`,
         linked_partitioning: `${LINKED_PARTITIONING}`,
-        q: 'pixies'
+        q: query
       }
     });
-  } 
+  }
 }
