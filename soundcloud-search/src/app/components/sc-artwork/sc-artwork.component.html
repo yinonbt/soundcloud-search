@@ -1,3 +1,11 @@
 <div class="sub-container" style="background-color: green">
-  <img src="{{currentTrack?.artwork_url}}">
+  <!-- <img src="{{currentTrack?.artwork_url}}"> -->
+  <img
+    *ngIf="currentTrack?.artwork_url"
+    [@fade]="state"
+    (@fade.done)="onDone($event)"
+    [src]="imageSource"
+    alt="{{ imageSource }}"
+  />
+  <div *ngIf="currentTrack && !currentTrack.artwork_url">No Image</div>
 </div>
