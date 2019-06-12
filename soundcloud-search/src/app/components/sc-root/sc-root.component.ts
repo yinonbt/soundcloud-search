@@ -13,6 +13,7 @@ export class ScRootComponent implements OnInit {
   tracks$: Observable<Track[]>;
   selectedTrack$: Observable<Track>;
   historyQueries$: Observable<string[]>;
+  historyQuery: string;
 
   constructor(private scSearchService: ScSearchService) {}
 
@@ -29,5 +30,9 @@ export class ScRootComponent implements OnInit {
 
   onTrackSelected(track: Track) {
     this.scSearchService.selectTrack(track);
+  }
+
+  onHistoryQuerySelected(query: string) {
+    this.historyQuery = query;
   }
 }

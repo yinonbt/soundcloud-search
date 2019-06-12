@@ -1,3 +1,5 @@
 <div class="sub-container" style="background-color: magenta">
-  <div *ngFor="let hq of historyQueries">{{hq}}</div>
+  <div *ngFor="let hq of historyQueries" class="history-item-container" (click)="onHistoryItemClick(hq)" [ngClass]="{
+    'history-item-container-selected': selectedHistoryQuery === hq
+  }">{{hq}}</div>
 </div>

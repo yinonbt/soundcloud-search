@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input, OnChanges } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Track } from 'src/app/models/track';
 
@@ -7,12 +7,13 @@ import { Track } from 'src/app/models/track';
   templateUrl: './sc-search.component.html',
   styleUrls: ['./sc-search.component.scss']
 })
-export class ScSearchComponent implements OnInit {
+export class ScSearchComponent implements OnInit, OnChanges {
+  
   @Input() tracks: Track[];
   @Input() selectedTrack: Track;
+  @Input() query: string;
   @Output() searchRequested = new EventEmitter<string>();
   @Output() trackSelected = new EventEmitter<Track>();
-  query: string;
 
   searchFormGroup = this.formBuilder.group({
     formControlSearch: [this.query, Validators.required]
@@ -21,6 +22,10 @@ export class ScSearchComponent implements OnInit {
   constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit() {}
+
+  ngOnChanges(): void {
+    console.log('selected history: ', this.query);
+  }
 
   execSearch() {
     let query: string = this.searchFormGroup

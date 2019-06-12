@@ -1,0 +1,11 @@
+.history-item-container {
+    margin-top: 10px;
+}
+.history-item-container:hover {
+    background-color: lightblue;
+    cursor: default;
+}
+.history-item-container-selected {
+    background-color: lightblue;
+    font-weight: bold;
+}
