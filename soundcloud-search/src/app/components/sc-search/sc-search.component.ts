@@ -24,7 +24,7 @@ export class ScSearchComponent implements OnInit, OnChanges {
   ngOnInit() {}
 
   ngOnChanges(): void {
-    console.log('selected history: ', this.query);
+    this.searchFormGroup.get('formControlSearch').setValue(this.query);
   }
 
   execSearch() {
