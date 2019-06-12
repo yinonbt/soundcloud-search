@@ -13,6 +13,8 @@ export class ScRootComponent implements OnInit {
   tracks$: Observable<Track[]>;
   selectedTrack$: Observable<Track>;
   historyQueries$: Observable<string[]>;
+  backEnabled$: Observable<boolean>;
+  nextEnabled$: Observable<boolean>;
   historyQuery: string;
 
   constructor(private scSearchService: ScSearchService) {}
@@ -21,11 +23,21 @@ export class ScRootComponent implements OnInit {
     this.tracks$ = this.scSearchService.tracks$;
     this.selectedTrack$ = this.scSearchService.selectedTrack$;
     this.historyQueries$ = this.scSearchService.historyQueries$;
+    this.backEnabled$ = this.scSearchService.backEnabled$;
+    this.nextEnabled$ = this.scSearchService.nextEnabled$;
     this.scSearchService.getHistoryQueries();
   }
 
   onSearchRequested(query: string) {
     this.scSearchService.execSearch(query);
+  }
+
+  onBackRequested() {
+    this.scSearchService.execBack();
+  }
+
+  onNextRequested() {
+    this.scSearchService.execNext();
   }
 
   onTrackSelected(track: Track) {

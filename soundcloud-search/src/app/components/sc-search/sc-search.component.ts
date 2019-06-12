@@ -12,8 +12,12 @@ export class ScSearchComponent implements OnInit, OnChanges {
   @Input() tracks: Track[];
   @Input() selectedTrack: Track;
   @Input() query: string;
+  @Input() backEnabled: boolean;
+  @Input() nextEnabled: boolean;
   @Output() searchRequested = new EventEmitter<string>();
   @Output() trackSelected = new EventEmitter<Track>();
+  @Output() backRequested = new EventEmitter<void>();
+  @Output() nextRequested = new EventEmitter<void>();
 
   searchFormGroup = this.formBuilder.group({
     formControlSearch: [this.query, Validators.required]
@@ -39,5 +43,13 @@ export class ScSearchComponent implements OnInit, OnChanges {
 
   onTrackSelected(track: Track) {
     this.trackSelected.emit(track);
+  }
+
+  onBack() {
+    this.backRequested.emit();
+  }
+
+  onNext() {
+    this.nextRequested.emit();
   }
 }

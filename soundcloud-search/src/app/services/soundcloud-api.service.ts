@@ -19,7 +19,7 @@ import { map, filter, switchMap } from 'rxjs/operators';
 export class SoundcloudApiService {
   constructor(private http: Http, private httpClient: HttpClient) {}
 
-  fetchSearchResults(query: string): Observable<IPaginatedData> {
+  fetchSearchResults(query: string, offset: number): Observable<IPaginatedData> {
     const url = `${API_TRACKS_URL}`;
     return this.httpClient.get<IPaginatedData>(url, {
       params: {
@@ -27,7 +27,7 @@ export class SoundcloudApiService {
         limit: `${PAGINATION_LIMIT}`,
         linked_partitioning: `${LINKED_PARTITIONING}`,
         q: query,
-        offset: '0'
+        offset: offset.toString()
       }
     });
   }

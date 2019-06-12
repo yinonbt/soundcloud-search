@@ -3,6 +3,7 @@ import { SoundcloudApiService } from './soundcloud-api.service';
 import { Track } from '../models/track';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { ScHistoryService } from './sc-history.service';
+import { PAGINATION_LIMIT } from '../app.config';
 
 @Injectable({
   providedIn: 'root'
@@ -37,9 +38,9 @@ export class ScSearchService {
           this.nextEnabled$.next(false);
         }
         if (this.offset === 0) {
-          this.backEnabled$.next(true);
-        } else {
           this.backEnabled$.next(false);
+        } else {
+          this.backEnabled$.next(true);
         }
 
         this.tracks$.next(paginatedData.collection);
@@ -51,6 +52,18 @@ export class ScSearchService {
         console.log(err);
       }
     );
+  }
+
+  execNext()
+  {
+    this.offset += PAGINATION_LIMIT;
+    this.execSearch(this.lastQuery);
+  }
+
+  execBack()
+  {
+    this.offset -= PAGINATION_LIMIT;
+    this.execSearch(this.lastQuery);
   }
 
   selectTrack(track: Track) {

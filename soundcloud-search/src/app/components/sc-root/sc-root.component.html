@@ -1,8 +1,20 @@
 <div class="main-container">
-  <app-sc-search (searchRequested)="onSearchRequested($event)" (trackSelected)="onTrackSelected($event)"
-    [tracks]="tracks$ | async" [selectedTrack]="selectedTrack$ | async" [query]="historyQuery">
+  <app-sc-search
+    (searchRequested)="onSearchRequested($event)"
+    (trackSelected)="onTrackSelected($event)"
+    (backRequested)="onBackRequested()"
+    (nextRequested)="onNextRequested()"
+    [tracks]="tracks$ | async"
+    [selectedTrack]="selectedTrack$ | async"
+    [query]="historyQuery"
+    [backEnabled]="backEnabled$ | async"
+    [nextEnabled]="nextEnabled$ | async"
+  >
   </app-sc-search>
   <app-sc-artwork [selectedTrack]="selectedTrack$ | async"></app-sc-artwork>
-  <app-sc-search-history [historyQueries]="historyQueries$ | async" (historyQuerySelected)="onHistoryQuerySelected($event)">
+  <app-sc-search-history
+    [historyQueries]="historyQueries$ | async"
+    (historyQuerySelected)="onHistoryQuerySelected($event)"
+  >
   </app-sc-search-history>
 </div>

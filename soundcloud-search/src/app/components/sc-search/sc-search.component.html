@@ -1,22 +1,30 @@
 <div class="sub-container" style="background-color: yellow">
-  <form [formGroup]="searchFormGroup" (ngSubmit)="execSearch()">
-    <div class="search-control">
-      <input
-        id="inputSearch"
-        type="text"
-        formControlName="formControlSearch"
-        [placeholder]="'Search'"
-      />
-      <button type="submit" [disabled]="searchFormGroup.invalid">Go</button>
+  <div>
+    <form [formGroup]="searchFormGroup" (ngSubmit)="execSearch()">
+      <div class="search-control">
+        <input
+          id="inputSearch"
+          type="text"
+          formControlName="formControlSearch"
+          [placeholder]="'Search'"
+        />
+        <button type="submit" [disabled]="searchFormGroup.invalid">Go</button>
+      </div>
+    </form>
+    <div class="results-container">
+      <div *ngFor="let track of tracks">
+        <app-sc-search-result
+          [track]="track"
+          [selectedTrack]="selectedTrack"
+          (trackSelected)="onTrackSelected($event)"
+        ></app-sc-search-result>
+      </div>
     </div>
-  </form>
-  <div class="results-container">
-    <div *ngFor="let track of tracks">
-      <app-sc-search-result
-        [track]="track"
-        [selectedTrack]="selectedTrack"
-        (trackSelected)="onTrackSelected($event)"
-      ></app-sc-search-result>
+  </div>
+  <div>
+    <div class="next-back-wrapper">
+      <button [disabled]="!backEnabled" (click)="onBack()">Back</button>
+      <button [disabled]="!nextEnabled" (click)="onNext()">Next</button>
     </div>
   </div>
 </div>
