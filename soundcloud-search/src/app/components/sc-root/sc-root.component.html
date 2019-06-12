@@ -6,7 +6,7 @@
     (nextRequested)="onNextRequested()"
     [tracks]="tracks$ | async"
     [selectedTrack]="selectedTrack$ | async"
-    [query]="historyQuery"
+    [query]="selectedQuery$ | async"
     [backEnabled]="backEnabled$ | async"
     [nextEnabled]="nextEnabled$ | async"
   >
@@ -14,6 +14,7 @@
   <app-sc-artwork [selectedTrack]="selectedTrack$ | async"></app-sc-artwork>
   <app-sc-search-history
     [historyQueries]="historyQueries$ | async"
+    [selectedQuery]="selectedQuery$ | async"
     (historyQuerySelected)="onHistoryQuerySelected($event)"
   >
   </app-sc-search-history>

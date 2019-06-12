@@ -8,7 +8,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class ScSearchHistoryComponent implements OnInit {
   @Input() historyQueries: string[];
   @Output() historyQuerySelected = new EventEmitter<string>();
-  selectedHistoryQuery: string;
+  @Input() selectedQuery: string;
   
   constructor() { }
 
@@ -16,7 +16,6 @@ export class ScSearchHistoryComponent implements OnInit {
   }
 
   onHistoryItemClick(query: string) {
-    this.selectedHistoryQuery = query;
     this.historyQuerySelected.emit(query);
   }
 

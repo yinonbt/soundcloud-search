@@ -9,21 +9,29 @@ import { PAGINATION_LIMIT } from '../app.config';
   providedIn: 'root'
 })
 export class ScSearchService {
+  
   tracks$ = new BehaviorSubject<Track[]>([]);
   selectedTrack$ = new BehaviorSubject<Track>(null);
   historyQueries$ = new BehaviorSubject<string[]>([]);
   nextEnabled$ = new BehaviorSubject<boolean>(false);
   backEnabled$ = new BehaviorSubject<boolean>(false);
+  selectedQuery$ = new BehaviorSubject<string>('');
 
   offset = 0;
   lastQuery: string;
+  
 
   constructor(
     private apiService: SoundcloudApiService,
     private historyService: ScHistoryService
   ) {}
 
+  selectQuery(query: string) {
+    this.selectedQuery$.next(query);
+  }
+
   execSearch(query: string) {
+    this.selectQuery(query);
     if (this.lastQuery == null || this.lastQuery !== query) {
       this.lastQuery = query;
       this.offset = 0;

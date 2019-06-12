@@ -15,7 +15,7 @@ export class ScRootComponent implements OnInit {
   historyQueries$: Observable<string[]>;
   backEnabled$: Observable<boolean>;
   nextEnabled$: Observable<boolean>;
-  historyQuery: string;
+  selectedQuery$: Observable<string>;
 
   constructor(private scSearchService: ScSearchService) {}
 
@@ -25,6 +25,7 @@ export class ScRootComponent implements OnInit {
     this.historyQueries$ = this.scSearchService.historyQueries$;
     this.backEnabled$ = this.scSearchService.backEnabled$;
     this.nextEnabled$ = this.scSearchService.nextEnabled$;
+    this.selectedQuery$ = this.scSearchService.selectedQuery$;
     this.scSearchService.getHistoryQueries();
   }
 
@@ -45,6 +46,6 @@ export class ScRootComponent implements OnInit {
   }
 
   onHistoryQuerySelected(query: string) {
-    this.historyQuery = query;
+    this.scSearchService.selectQuery(query);
   }
 }
