@@ -26,7 +26,8 @@ export class SoundcloudApiService {
         client_id: `${CLIENT_ID}`,
         limit: `${PAGINATION_LIMIT}`,
         linked_partitioning: `${LINKED_PARTITIONING}`,
-        q: query
+        q: query,
+        offset: '0'
       }
     });
   }

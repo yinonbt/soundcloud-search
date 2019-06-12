@@ -1,25 +1,27 @@
-import { Injectable } from "@angular/core";
-import { HISTORY_KEY, HISTORY_LENGTH } from "../app.config";
+import { Injectable } from '@angular/core';
+import { HISTORY_KEY, HISTORY_LENGTH } from '../app.config';
 
 @Injectable({
-  providedIn: "root"
+  providedIn: 'root'
 })
 export class ScHistoryService {
   constructor() {}
 
   pushQuery(query: string) {
-    const historyQueries = this.getHistoryQueries();
+    let historyQueries = this.getHistoryQueries();
     if (!historyQueries.find(q => q === query)) {
-      if (historyQueries.length == HISTORY_LENGTH) {
+      if (historyQueries.length === HISTORY_LENGTH) {
         historyQueries.pop();
       }
-      historyQueries.push(query);
+      const oldHistoryQueries = historyQueries;
+      historyQueries = [query].concat(oldHistoryQueries);
+
       this.saveHistory(historyQueries);
     }
   }
 
   getHistoryQueries(): string[] {
-    let historyQueries: string[];
+    const historyQueries: string[] = [];
     for (let i = 0; i < HISTORY_LENGTH; i++) {
       const key = HISTORY_KEY + i;
       const historyQuery = localStorage.getItem(key);

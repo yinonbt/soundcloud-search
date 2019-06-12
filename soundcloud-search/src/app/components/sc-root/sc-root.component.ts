@@ -12,12 +12,15 @@ import { ScSearchService } from 'src/app/services/sc-search.service';
 export class ScRootComponent implements OnInit {
   tracks$: Observable<Track[]>;
   selectedTrack$: Observable<Track>;
+  historyQueries$: Observable<string[]>;
 
   constructor(private scSearchService: ScSearchService) {}
 
   ngOnInit() {
     this.tracks$ = this.scSearchService.tracks$;
     this.selectedTrack$ = this.scSearchService.selectedTrack$;
+    this.historyQueries$ = this.scSearchService.historyQueries$;
+    this.scSearchService.getHistoryQueries();
   }
 
   onSearchRequested(query: string) {
