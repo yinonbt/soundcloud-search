@@ -1,19 +1,19 @@
-import { Component, OnInit, Input, OnChanges } from "@angular/core";
-import { Track } from "src/app/models/track";
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { Track } from 'src/app/models/track';
 import { fade } from './animations';
 
 @Component({
-  selector: "app-sc-artwork",
-  templateUrl: "./sc-artwork.component.html",
-  styleUrls: ["./sc-artwork.component.scss"],
+  selector: 'app-sc-artwork',
+  templateUrl: './sc-artwork.component.html',
+  styleUrls: ['./sc-artwork.component.scss'],
   animations: fade
 })
 export class ScArtworkComponent implements OnInit, OnChanges {
   @Input() selectedTrack: Track;
-  imageSource = "";
+  imageSource = '';
   // enableAnimation = false;
   // counter = 0;
-  state = "in";
+  state = 'in';
   // choice = 2;
   prevTrack: Track;
   currentTrack: Track;
@@ -26,24 +26,23 @@ export class ScArtworkComponent implements OnInit, OnChanges {
     // console.log('this.selectedTrack', this.selectedTrack);
     this.prevTrack = this.currentTrack;
     this.currentTrack = this.selectedTrack;
-    
+
     if (this.currentTrack && this.currentTrack.artwork_url) {
       // console.log('this.currentTrack.artwork_url: ', this.currentTrack.artwork_url);
       if (this.prevTrack && this.prevTrack.artwork_url) {
         // this.enableAnimation = true;
         // this.counter = 0;
         // this.toggleState();
-        this.state = "out";
+        this.state = 'out';
       } else {
         // console.log('first image url: ', this.currentTrack.artwork_url);
         this.imageSource = this.currentTrack.artwork_url;
       }
     } else {
-      this.imageSource = "";
+      this.imageSource = '';
     }
   }
 
-  
   toggleState() {
     // if (this.counter < 2) {
     //   this.state = this.state === "in" ? "out" : "in";
@@ -62,8 +61,8 @@ export class ScArtworkComponent implements OnInit, OnChanges {
   }
 
   onDone($event) {
-    if (this.imageSource === this.prevTrack.artwork_url) {
-      this.state = "in";
+    if (this.prevTrack && this.imageSource === this.prevTrack.artwork_url) {
+      this.state = 'in';
       this.imageSource = this.currentTrack.artwork_url;
     }
   }

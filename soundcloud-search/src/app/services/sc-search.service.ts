@@ -10,7 +10,7 @@ import { PAGINATION_LIMIT } from '../app.config';
 })
 export class ScSearchService {
   
-  tracks$ = new BehaviorSubject<Track[]>([]);
+  tracks$ = new BehaviorSubject<Track[]>(null);
   selectedTrack$ = new BehaviorSubject<Track>(null);
   historyQueries$ = new BehaviorSubject<string[]>([]);
   nextEnabled$ = new BehaviorSubject<boolean>(false);

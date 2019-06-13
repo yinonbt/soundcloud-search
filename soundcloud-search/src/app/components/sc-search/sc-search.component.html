@@ -12,6 +12,7 @@
       </div>
     </form>
     <div class="results-container">
+      <div *ngIf="query && tracks?.length === 0">No Results.</div>
       <div *ngFor="let track of tracks">
         <app-sc-search-result
           [track]="track"
